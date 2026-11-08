@@ -188,5 +188,5 @@ Verified end to end on a local OpenHarmony emulator (API 22, connected via
    `uitest dumpLayout`), the app process stays alive, and hilog shows no
    crashes.
 
-The emulator is a HarmonyOS NEXT device model; on a real OpenHarmony device the
-same build and signing flow applies, only the debug-profile UDID changes.
+The emulator runs OpenHarmony (API 22); on a real OpenHarmony device the same
+build and signing flow applies, only the debug-profile UDID changes.
