@@ -171,5 +171,22 @@ Three more habits the port relies on:
   page and has twice destroyed files in this repository (see the plan's
   verification notes). After any bulk edit, scan for U+FFFD.
 
-Runtime behaviour on a device is verified in DevEco Studio, since this repository
-has no HarmonyOS device or emulator attached.
+## On-device verification
+
+Verified end to end on a local OpenHarmony emulator (API 22, connected via
+`hdc` at `127.0.0.1:5555`):
+
+1. `hvigorw.bat assembleHap` builds `entry-default-unsigned.hap` with zero
+   errors and zero ArkTS warnings.
+2. The unsigned HAP is signed with the OpenHarmony SDK toolchain
+   (`hap-sign-tool.jar` + the bundled `OpenHarmony.p12`, local debug profile
+   bound to the emulator UDID).
+3. `hdc install -r entry-default-signed.hap` reports
+   `install bundle successfully`.
+4. `aa start -b com.agentsanywhere.app -a EntryAbility` starts the ability; the
+   login page renders (QR-code login and account/password tabs confirmed via
+   `uitest dumpLayout`), the app process stays alive, and hilog shows no
+   crashes.
+
+The emulator is a HarmonyOS NEXT device model; on a real OpenHarmony device the
+same build and signing flow applies, only the debug-profile UDID changes.
