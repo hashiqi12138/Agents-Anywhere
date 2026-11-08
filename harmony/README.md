@@ -187,6 +187,9 @@ Verified end to end on a local OpenHarmony emulator (API 22, connected via
    login page renders (QR-code login and account/password tabs confirmed via
    `uitest dumpLayout`), the app process stays alive, and hilog shows no
    crashes.
+5. Tapping the account/password tab navigates to the login-service chooser
+   (「选择登录服务」: Cloud login / connect to your own server), confirmed by
+   re-dumping the layout after the tap and by a second screenshot.
 
 The emulator runs OpenHarmony (API 22); on a real OpenHarmony device the same
 build and signing flow applies, only the debug-profile UDID changes.
